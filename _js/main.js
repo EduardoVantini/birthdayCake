@@ -21,7 +21,7 @@ const birthday = {
             + '{"name":"Joao","birthday": "15/07/1999"},'
             + '{"name":"Maria","birthday":"12/07/1987"},'
             + '{"name":"Jose","birthday":"28/07/1991"},'
-            + '{"name":"Alice","birthday":"15/07/2000"}'
+            + '{"name":"Alice","birthday":"18/07/2000"}'
             +']}'
         )
 
@@ -31,13 +31,36 @@ const birthday = {
 
         for (i = 0; i < arr_dados[0].length; i++) {
 
-            $("#tblBirthday > tbody").append("<tr id='row_" + i + "'></tr>")
+/*             $("#tblBirthday > tbody").append("<tr id='row_" + i + "'></tr>")
 
             $("#row_" + i).append("<td>" + arr_dados[0][i].name + "</td>")
             $("#row_" + i).append("<td>" + arr_dados[0][i].birthday + "</td>")
 
-            this.cake(arr_dados[0][i].birthday) == true ? $("#row_" + i).append("<td><img src='_img/cake.png' ></td>"):$("#row_" + i).append("<td></td>")
+            this.cake(arr_dados[0][i].birthday) == true ? $("#row_" + i).append("<td><img src='_img/cake.png' ></td>"):$("#row_" + i).append("<td></td>") */
+
+            var tr = document.createElement("tr")
+            tr.id = "row_" + i
+            document.getElementById("tbody").appendChild(tr);
+
+            var tdName = document.createElement("td")
+            tdName.id = "name_" + i
+            document.getElementById("row_" + i).appendChild(tdName);
+
+            var tdDate = document.createElement("td")
+            tdDate.id = "date_" + i
+            document.getElementById("row_" + i).appendChild(tdDate);
+
+            var tdCake = document.createElement("td")
+            tdCake.id = "cake_" + i
+            document.getElementById("row_" + i).appendChild(tdCake);
+
+
+            document.getElementById("name_" + i).innerHTML =  arr_dados[0][i].name
+            document.getElementById("date_" + i).innerHTML =  arr_dados[0][i].birthday
+
+
+
+            this.cake(arr_dados[0][i].birthday) == true ? document.getElementById("cake_" + i).innerHTML = "<td><img src='_img/cake.png' ></td>":document.getElementById("cake_" + i).innerHTML = "<td></td>"        
         }
     }
-
 }
